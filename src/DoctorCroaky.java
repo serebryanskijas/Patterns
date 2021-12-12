@@ -1,4 +1,13 @@
+import java.util.ArrayList;
+
 public class DoctorCroaky {
+    public static void main(String[] args) {
+        /*Story story = new Story();
+        story.tellFirstStory();*/
+
+        Story2 story2 = new Story2();
+        story2.tellSecondStory();
+    }
 
 }
 
@@ -38,21 +47,23 @@ interface Animal {
     public void come();
 }
 
-class Fox implements Animal{
+class Fox implements Animal {
 
     @Override
     public void come() {
         System.out.println("The fox came!");
     }
-    public void ask(){
+
+    public void ask() {
         System.out.println("Fox: If you can cure everyone then why haven't you cured your lame legs?");
     }
-    public void answer(){
+
+    public void answer() {
         System.out.println("Fox: Yes, we can be friends.");
     }
 }
 
-class Turtle implements Animal{
+class Turtle implements Animal {
 
     @Override
     public void come() {
@@ -60,10 +71,44 @@ class Turtle implements Animal{
     }
 }
 
-class Rabbit implements Animal{
+class Rabbit implements Animal {
 
     @Override
     public void come() {
         System.out.println("The rabbit came!");
+    }
+}
+
+class Story {
+    private final ArrayList<Animal> animals = new ArrayList<>();
+
+    public void tellFirstStory() {
+        Frog frog = new Frog();
+        animals.add(new Rabbit());
+        animals.add(new Turtle());
+        Animal fox = new Fox();
+        animals.add(fox);
+        frog.went().sayHello();
+        animals.forEach(Animal::come);
+        frog.introduce().advertise();
+        ((Fox)fox).ask();
+        frog.listen();
+    }
+}
+
+class Story2 {
+    private final ArrayList<Animal> animals = new ArrayList<>();
+
+    public void tellSecondStory() {
+        Frog frog = new Frog();
+        animals.add(new Rabbit());
+        animals.add(new Turtle());
+        Animal fox = new Fox();
+        animals.add(fox);
+        frog.went().sayHello();
+        animals.forEach(Animal::come);
+        frog.introduce().askToBeFriend();
+        ((Fox)fox).answer();
+
     }
 }
