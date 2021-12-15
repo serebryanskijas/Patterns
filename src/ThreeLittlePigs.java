@@ -1,5 +1,14 @@
 public class ThreeLittlePigs {
+    public static void main(String[] args) {
+        Builder nif_nif = new NifNif();
+        Builder naf_naf = new NafNaf();
+        Builder nuf_nuf = new NufNuf();
+        Director director= new Director();
+        director.setBuilder(nif_nif);
+        nif_nif.buildRoof();
 
+
+    }
 }
 
 interface Builder {
@@ -66,5 +75,27 @@ class NufNuf implements Builder {
 }
 
 class Director {
+
     private Builder builder;
+
+    public void setBuilder(Builder builder) {
+        this.builder = builder;
+    }
+    public void buildHouse(){
+        builder.buildBase();
+        builder.buildWalls();
+        builder.buildRoof();
+    }
+
+    public void buildBase(){
+        builder.buildBase();
+    }
+
+    public void buildWalls(){
+        builder.buildWalls();
+    }
+
+    public void buildRoof(){
+        builder.buildRoof();
+    }
 }
